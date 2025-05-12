@@ -1,0 +1,15 @@
+function s_strlen(str) {
+ return s_len(str)
+
+};
+
+function main() {
+  
+  str := extern str_symbol("str");
+  len := s_strlen(str); 
+  print len;
+
+  extern assume (len = 3);
+
+  return 0
+}

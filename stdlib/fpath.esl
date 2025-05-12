@@ -1,0 +1,93 @@
+/* Copyright (C) 2022-2025 formalsec programmers
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ */
+
+import stdlib;
+
+/** Simple library to manipulate unix-like paths */
+typedef fpath_t := list;
+
+/** Paths */
+function fpath_make(str : string) : fpath_t {
+  let str = (str == "/") ? "" : str;
+  return [ str ];
+}
+
+function add_seg(fpath : fpath_t, seg : string) : fpath_t {
+  return l_prepend(seg, fpath);
+}
+
+function fpath_append(a : fpath_t, b : fpath_t) {
+  return l_concat(b, a);
+}
+
+/** Base and Parent paths */
+function split_base(fpath : fpath_t) : pair_t {
+  let b = hd fpath;
+  let d = tl fpath;
+  return pair(b, d);
+}
+
+function basename(fpath : fpath_t) : string {
+  return hd fpath;
+}
+
+function dirname(fpath : fpath_t) : fpath_t {
+  return tl fpath;
+}
+
+/** Predicates and comparison */
+function is_rel(fpath : fpath_t) : boolean {
+  let fpath_rev = l_reverse(fpath);
+  let root = hd fpath_rev;
+  return root != "";
+}
+
+function is_abs(fpath : fpath_t) : boolean {
+  return !is_rel(fpath);
+}
+
+/** File extensions */
+function set_ext(fpath : fpath_t, ext : string) : string {
+  let p = split_base(fpath);
+  let b = fst(p);
+  let d = snd(p);
+  return add_seg(d, b + ext);
+}
+
+function get_ext(fpath : fpath_t) : any {
+  assert false;
+}
+
+function has_ext(fpath : fpath_t, ext : string) : boolean {
+  let p = split_base(fpath);
+  let b = fst(p);
+  return s_is_suffix(ext, b);
+}
+
+function split_ext(fpath : fpath_t) : any {
+  assert false;
+}
+
+/** Conversions */
+function fpath_to_string(fpath : fpath_t) : string {
+  let fpath_rev = l_reverse(fpath);
+  return s_join(fpath_rev, "/");
+}
+
+function fpath_of_string(str : string) : fpath_t  {
+  let fpath_rev = s_split(str, "/");
+  return l_reverse(fpath_rev);
+}

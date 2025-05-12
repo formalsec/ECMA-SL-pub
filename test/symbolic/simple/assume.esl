@@ -1,0 +1,7 @@
+function main () {
+  x := extern int_symbol("x");
+  extern assume(x > 10);
+  x := x * 2;
+  assert (x > 20);
+  return 1;
+}

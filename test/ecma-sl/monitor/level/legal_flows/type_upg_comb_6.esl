@@ -1,0 +1,19 @@
+function main () {
+	h:= true;
+	lh:= true;
+	o := {}
+	o.p := true;
+
+	x:= "upgVar"("h", "high");
+	x:= "upgVar"("lh", "high");
+	
+	if (h) {
+	 print lh
+	}
+
+
+
+
+	return lh
+
+}

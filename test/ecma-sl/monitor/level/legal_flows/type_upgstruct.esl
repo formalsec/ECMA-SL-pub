@@ -1,0 +1,23 @@
+function main () {
+	h:= true;
+	l:= true;
+	o := {}
+	o.p := true;
+	x := true;
+	aux1:= "upgStruct"(o, "high");
+	aux2:= "upgVar"("h", "high");
+
+	if (h) {
+	  aux3:= "upgStruct"(o, "low")
+	}
+	
+	if (!h) {
+	  l:= false
+	}
+
+
+
+
+	return l
+
+}

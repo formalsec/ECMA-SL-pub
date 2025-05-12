@@ -1,0 +1,5 @@
+(executable
+ (name main)
+ (flags
+  (:standard -open Smtml_prelude))
+ (libraries bos fpath fmt rusage smtml.prelude))

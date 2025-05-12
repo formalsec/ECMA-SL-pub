@@ -1,0 +1,19 @@
+function main () {
+	h:= 5;
+	lc := 0;
+	y := true;
+	x:= "upgVar"("h", "high");
+	l:= true;
+	x:= "upgVar"("l", "low");
+
+
+	if (h > 2) {
+  		h:= "legal"(lc, h)
+	}
+	return l
+}
+
+function legal(x,y) {
+	return y +10
+}
+

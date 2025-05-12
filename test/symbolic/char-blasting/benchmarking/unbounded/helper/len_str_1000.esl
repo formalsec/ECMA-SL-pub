@@ -1,0 +1,10 @@
+function main() {
+  
+  i := 1000;
+  str := extern str_symbol("str");
+  extern assume(s_len(str) <  i);
+
+  len := s_len(str);
+  
+  return 0
+}

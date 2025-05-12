@@ -1,0 +1,14 @@
+function main() {
+  
+  i := 10;
+  str := extern str_symbol("str");
+  extern assume(s_len(str) <  i);
+
+  len := s_len(str);
+  
+  if(len = 5){
+    print "len == 5"
+  };
+
+  return 0
+}

@@ -1,0 +1,15 @@
+function main() {
+
+  l := 10;
+  while (l > 0){
+
+    str := extern str_symbol("str");
+    extern assume(s_len(str) < 10);
+    
+    sub_str := s_substr(str, 3, 5);
+
+    l := l - 1
+  };
+
+  return 0
+}

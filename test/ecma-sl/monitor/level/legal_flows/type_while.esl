@@ -1,0 +1,19 @@
+function main () {
+h:= 5;
+y := true;
+x:= "upgVar"("h", "high");
+l:= true;
+x:= "upgVar"("l", "low");
+
+
+while (h < 10) {
+  h := h +1
+}
+
+if (y) {
+  l:= false
+}
+
+return l
+
+}

@@ -1,0 +1,6 @@
+[submodule "extensions/ecmasl-vim"]
+	path = extensions/ecmasl-vim
+	url = https://github.com/formalsec/ecmasl-vim.git
+[submodule "bench/test262"]
+	path = bench/test262
+	url = https://github.com/formalsec/test262.git

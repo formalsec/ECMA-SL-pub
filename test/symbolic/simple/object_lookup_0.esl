@@ -1,0 +1,12 @@
+function main() {
+  y := {};
+
+  read0 := y["test"];
+  assert (read0 == 'undefined);
+
+  x := extern str_symbol("x");
+  y[x] := 1;
+  read1 := y["test"];
+  assert (read1 == 1 || read1 == 'undefined);
+  return 0;
+}

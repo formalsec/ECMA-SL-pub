@@ -1,0 +1,36 @@
+function main() {
+  n1 := extern flt_symbol("n1");
+  n2 := extern flt_symbol("n2");
+  n3 := extern flt_symbol("n3");
+
+  v1 := s_concat(["/$", float_to_string(n1)]);
+  v2 := s_concat(["/$", float_to_string(n2)]);
+  v3 := s_concat(["/$", float_to_string(n3)]);
+
+  extern assume(n1 != n2);
+  extern assume(n1 != n3);
+
+  s1 := {}
+  s1[v1] := n1;
+  s1[v2] := n2;
+
+  s2 := {}
+  s2[v2] := n2;
+  s2[v3] := n3;
+
+  if (s2[v1] == 'undefined) {
+    delete s1[v1]
+  }
+
+  if (s2[v2] == 'undefined) {
+    delete s1[v2]
+  }
+
+  /* has v2 */
+  assert (s1[v2] != 'undefined);
+
+
+  res := s1[v1];
+  assert (res == 'undefined);
+  return 0
+}

@@ -1,0 +1,17 @@
+function main() {
+  y := {};
+  x := extern str_symbol("x");
+  z := extern str_symbol("z");
+
+  y["length"] := 2.0;
+  y[x] := 1.0;
+  y[z] := 5.0;
+
+  w := y[x];
+  v := y["test"];
+  t := y["length"];
+  assert (w == 1.0 || w == 5.0);
+  assert (v == 'undefined || v == 1.0 || v == 5.0);
+  assert (t == 2.0 || t == 1.0 || t == 5.0);
+  return 0;
+}

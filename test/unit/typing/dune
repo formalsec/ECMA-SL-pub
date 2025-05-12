@@ -1,0 +1,19 @@
+(library
+ (name ecmasl_typed_tests)
+ (modules
+  test
+  test_syntax
+  test_congruency
+  test_subtyping
+  test_expr
+  test_operator)
+ (inline_tests)
+ (preprocess
+  (pps ppx_inline_test))
+ (libraries ecma-sl))
+
+(cram
+ (deps
+  %{bin:ecma-sl}
+  (package ecma-sl)
+  (source_tree examples)))

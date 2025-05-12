@@ -1,0 +1,83 @@
+/* Copyright (C) 2022-2025 formalsec programmers
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ */
+
+import fpath;
+
+/** A simple library to interact with the underlying OS. */
+
+/** Input from files */
+
+/* TODO: find a way to propagte the exceptions from the ocaml side.
+   Maybe return an integer for every error possible and propagate it here? */
+function open_in(fpath : fpath_t) {
+  let fpath = fpath_to_string(fpath);
+  let fd = extern open_in_external(fpath);
+  return fd;
+}
+
+function close(fd) {
+  extern close_external(fd);
+  return;
+}
+
+function with_open_in(fpath : fpath_t, f) {
+  let fd = open_in(fpath);
+  let result = {f}(fd);
+  close(fd);
+  return result;
+}
+
+function input_line(fd) {
+  return extern input_line_external(fd);
+}
+
+function input_all(fd) {
+  return extern input_all_external(fd);
+}
+
+/** Output to files */
+function open_out(fpath : fpath_t) {
+  let fpath = fpath_to_string(fpath);
+  let fd = extern open_out_external(fpath);
+  return fd;
+}
+
+function with_open_out(fpath : fpath_t, f) {
+  let fd = open_out(fpath);
+  let result = {f}(fd);
+  close(fd);
+  return result;
+}
+
+function output_string(fd, str) {
+  extern output_string_external(fd, str);
+  return;
+}
+
+/* File manipulation */
+function file_exists(fpath : fpath_t) {
+  let fpath = fpath_to_string(fpath);
+  return extern file_exists_external(fpath);
+}
+
+function mkdir(fpath : fpath_t) {
+  /* TODO: mkdir */
+  throw "TODO: os.mkdir";
+}
+
+function time() {
+  return extern time_external();
+}

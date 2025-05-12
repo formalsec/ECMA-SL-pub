@@ -1,0 +1,30 @@
+function main () {
+	print "0";
+	h:= true;
+	print "1";
+	l:= true;
+	print "2";
+	o := {}
+	print "3";
+	o.p := true;
+	print "4";
+
+	x:= "upgVar"("h", "high");
+	print "5";
+
+
+	if (h) {
+	  print "6";
+	  o.p := false
+	}
+	x:= o.p;	
+
+	if (x) {
+	  l := false
+	}
+
+
+
+	return l
+
+}

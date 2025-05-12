@@ -1,0 +1,23 @@
+function main () {
+	h:= true;
+	l:= true;
+	o := {}
+	o.p := true;
+	x := true;
+	aux1:= "upgObject"(o, "high");
+	aux2:= "upgVar"("h", "high");
+
+	if (h) {
+	  aux3:= "upgObject"(o, "low")
+	}
+	
+	if (!h) {
+	  l:= false
+	}
+
+
+
+
+	return l
+
+}

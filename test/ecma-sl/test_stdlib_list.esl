@@ -1,0 +1,32 @@
+import stdlib;
+
+function add(a: int, b: int): int {
+  return a + b;
+}
+
+function square(n: int): int {
+  return n * n;
+}
+
+function print_int(n: int): void {
+  print n;
+  return;
+}
+
+function main() {
+  list := [8, 4, 2, 0, 7, 1, 9, 3, 6, 5];
+
+  print "Initial list:";
+  iter("print_int", list);
+
+  print "Squared list:";
+  squares := map("square", list);
+  iter("print_int", squares);
+
+  sum_squares := fold("add", 0, squares);
+  print ("Sum of squares: " + (int_to_string sum_squares));
+
+  print "Sorted list:";
+  print list_sort("compare", list);
+  return 0;
+}

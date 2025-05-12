@@ -1,0 +1,103 @@
+/* Copyright (C) 2022-2025 formalsec programmers
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ */
+
+typedef queue_node_t := {
+  value : any,
+  next : queue_node_t | null
+};
+
+function queue_node_make(value : any) : queue_node_t {
+  node := { value: value, next: null };
+  return node;
+}
+
+typedef queue_t := {
+  front : queue_node_t | null,
+  rear : queue_node_t | null
+};
+
+function queue_make() : queue_t {
+  q := { front: null, rear: null };
+  return q;
+}
+
+function queue_is_empty(queue : queue_t) : boolean {
+  return queue.front == null;
+}
+
+function enqueue(queue : queue_t, val : any) {
+  let new_node = queue_node_make(val);
+
+  if (queue.front == null) {
+    queue.front := new_node;
+  } else {
+    queue.rear.next := new_node;
+  }
+
+  queue.rear := new_node;
+  queue.rear.next := queue.front;
+  return;
+}
+
+function dequeue(queue : queue_t) : any | null {
+  if (queue_is_empty(queue)) {
+    return null;
+  }
+
+  value := null;
+  if (queue.front == queue.rear) {
+    value := queue.front.value;
+    queue.front := null;
+    queue.rear := null;
+  } else {
+    /* FIXME: We should delete the objects we removed? */
+    tmp := queue.front;
+    value := tmp.value;
+    queue.front := queue.front.next;
+    queue.rear.next := queue.front;
+  }
+  return value;
+}
+
+function front(queue : queue_t) : any | null {
+  if (queue_is_empty(queue)) {
+    return null;
+  }
+  return queue.front.value;
+}
+
+function rear(queue : queue_t) : any | null {
+  if (queue_is_empty(queue)) {
+    return null;
+  }
+  return queue.rear.value;
+}
+
+function queue_iter(f, queue : queue_t) {
+  if (queue_is_empty(queue)) {
+    return;
+  }
+  curr := queue.front;
+  exit := false;
+  while (!exit) {
+    {f}(curr.value);
+    curr := curr.next;
+    if (curr == queue.front) {
+      exit := true;
+    }
+  }
+  return;
+}

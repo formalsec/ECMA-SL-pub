@@ -1,0 +1,42 @@
+(include_subdirs unqualified)
+
+(executable
+ (public_name ecma-sl)
+ (name main)
+ (modules
+  main
+  docs
+  result
+  enums
+  files
+  git
+  webhook
+  test_metadata
+  test_notify
+  test_parser
+  test_record
+  test_result
+  test_runner
+  test_tree
+  ; commands
+  cmd_compile
+  cmd_encode
+  cmd_execute
+  cmd_interpret
+  cmd_symbolic
+  cmd_test
+  cmd_test_symbolic)
+ (libraries
+  bos
+  eio
+  eio_main
+  ecma-sl
+  ecma-sl.symbolic
+  fmt
+  cmdliner
+  yojson
+  cohttp
+  cohttp-lwt-unix
+  lwt)
+ (instrumentation
+  (backend bisect_ppx)))

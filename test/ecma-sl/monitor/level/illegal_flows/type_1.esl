@@ -1,0 +1,18 @@
+function main () {
+h:= true;
+l:= true;
+laux :=true;
+
+x:= "upgVar"("l", "low");
+x:= "upgVar"("h", "high");
+x:= "upgVar"("laux","low");
+
+
+if (h) {
+  laux:=false
+  }
+if (laux) {
+  l:= false
+  }
+return l
+}

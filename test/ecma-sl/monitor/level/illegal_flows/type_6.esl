@@ -1,0 +1,27 @@
+function main () {
+h:= true;
+l:= true;
+ol := {}
+oh := {}
+oh.p := true;
+ol.p := true;
+
+x:= "upgVar"("oh", "high");
+x:= "upgVar"("h", "high");
+
+
+if (h) {
+  oh := ol
+}
+delete oh["p"];
+x:= "p" in_obj ol;
+if (x) {
+  l:= false
+}
+
+
+
+
+return l
+
+}

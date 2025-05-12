@@ -1,0 +1,5 @@
+import "c.esl";
+
+function b() {
+  return "b";
+}

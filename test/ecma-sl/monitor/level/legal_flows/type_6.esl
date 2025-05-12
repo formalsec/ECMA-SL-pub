@@ -1,0 +1,28 @@
+function main () {
+h:= false;
+l:= true;
+ol := {}
+oh := {}
+
+
+x:= "upgVar"("l", "low");
+x:= "upgVar"("h", "high");
+x:= "upgStruct"(ol, "low");
+x:= "upgStruct"(oh, "high");
+oh.p := true;
+oh.p := true;
+if (h) {
+  oh := ol
+}
+delete oh["p"];
+x:= "p" in_obj ol;
+if (x) {
+  l:= false
+}
+
+
+
+
+return l
+
+}

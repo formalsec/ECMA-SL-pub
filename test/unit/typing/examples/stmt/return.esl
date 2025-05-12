@@ -1,0 +1,12 @@
+/* Function with 'any' return type */
+function anyVoidReturn()            { return; } 				/* Valid */
+function anyValueReturn()           { return 10; }			/* Valid */
+
+/* Functions with 'void' dreturn type */
+function voidReturn(): void         { return; }					/* Valid */
+function badVoidReturn(): int       { return; }					/* BadReturn: int <- void */
+
+/* Functions with value return type */
+function valueReturn(): int         { return 10; }			/* Valid */
+function badValueReturn(): int      { return "abc"; }		/* BadReturn: int <- string */
+function badValueVoidReturn(): void { return 10; }				/* BadReturn: void <- int */

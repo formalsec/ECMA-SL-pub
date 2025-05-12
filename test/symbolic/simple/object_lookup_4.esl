@@ -1,0 +1,11 @@
+function main() {
+  y := {};
+  x := extern str_symbol("x");
+
+  y["length"] := 2.0;
+  y[x] := 1.0;
+
+  z := y["test"];
+  assert (z == 'undefined || z == 1.0);
+  return 0;
+}

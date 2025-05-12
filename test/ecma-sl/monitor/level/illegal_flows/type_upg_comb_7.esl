@@ -1,0 +1,22 @@
+function main () {
+	h:= true;
+	l:= true;
+	o := {}
+	o.p := true;
+	t := false;
+
+	aux1:= "upgVar"("h","high");
+	
+
+	t:= "p" in_obj o;
+
+	delete o["p"];
+	if (h) {
+	o.p := 4
+	}
+	
+
+	print t;
+	return l
+
+}

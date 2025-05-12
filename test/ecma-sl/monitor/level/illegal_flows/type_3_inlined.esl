@@ -1,0 +1,276 @@
+function parse_lvl (lev_str) { if (lev_str == "high") {
+return true
+} else {
+if (lev_str == "low") {
+return false
+} else {
+throw "MONITOR EXCEPTION -> parselvl - Unkown Security Level"
+}
+} }
+function upgObject (obj, lev_obj, lev_str, lev_lev_str, pc) { lev := "parse_lvl" (lev_str);
+leq_1 := "leq" (lev_lev_str, pc);
+if (!(leq_1)) {
+throw "MONITOR EXCEPTION -> upgObject - Levels must be literals"
+}
+lev_ctx := "lub" (lev_obj, pc);
+lev_2 := obj["objLev"];
+leq_2 := "leq" (lev_ctx, lev_2);
+if (leq_2) {
+lev_3 := "lub" (lev_ctx, lev);
+obj["objLev"] := lev_3
+} else {
+throw "MONITOR EXCEPTION -> Illegal P_Val Upgrade"
+}
+return ( 0, pc ) }
+function shadowPropExists (prop_str) { result := s_concat([ prop_str, "_prop_exists_lvl" ]);
+return result }
+function main (_pc_1) { _pc_1 := "parse_lvl" ("low");
+h_lev := true;
+l_lev := true;
+o_lev := true;
+x_lev := true;
+_fresh_lev_var0 := "lubn" ([  ]);
+_freshvar_0 := "leq" (_pc_1, _fresh_lev_var0);
+if (_freshvar_0) {
+print "1"
+} else {
+throw "MONITOR EXCEPTION -> Illegal Print"
+}
+_freshvar_1 := "leq" (_pc_1, h_lev);
+if (_freshvar_1) {
+_fresh_lev_var1 := "lubn" ([  ]);
+h_lev := "lub" (_pc_1, _fresh_lev_var1);
+h := true
+} else {
+throw "MONITOR EXCEPTION -> Illegal Assignment"
+}
+_fresh_lev_var2 := "lubn" ([  ]);
+_freshvar_2 := "leq" (_pc_1, _fresh_lev_var2);
+if (_freshvar_2) {
+print "2"
+} else {
+throw "MONITOR EXCEPTION -> Illegal Print"
+}
+_freshvar_3 := "leq" (_pc_1, l_lev);
+if (_freshvar_3) {
+_fresh_lev_var3 := "lubn" ([  ]);
+l_lev := "lub" (_pc_1, _fresh_lev_var3);
+l := true
+} else {
+throw "MONITOR EXCEPTION -> Illegal Assignment"
+}
+_fresh_lev_var4 := "lubn" ([  ]);
+_freshvar_4 := "leq" (_pc_1, _fresh_lev_var4);
+if (_freshvar_4) {
+print "3"
+} else {
+throw "MONITOR EXCEPTION -> Illegal Print"
+}
+o := { }
+o["structLev"] := _pc_1;
+o["objLev"] := _pc_1;
+o_lev := _pc_1;
+_fresh_lev_var5 := "lubn" ([  ]);
+_freshvar_5 := "leq" (_pc_1, _fresh_lev_var5);
+if (_freshvar_5) {
+print "4"
+} else {
+throw "MONITOR EXCEPTION -> Illegal Print"
+}
+_fresh_lev_var6 := "lubn" ([ o_lev ]);
+_fresh_lev_var7 := "lubn" ([  ]);
+_fresh_lev_var8 := "lubn" ([  ]);
+_freshvar_lev_0 := "lubn" ([ _fresh_lev_var6, _fresh_lev_var7, _pc_1 ]);
+_freshvar_7 := "shadowPropValue" ("p");
+_fresh_field_lev_0 := o[_freshvar_7];
+if (_fresh_field_lev_0 == 'undefined) {
+_fresh_field_lev_1 := o["structLev"];
+_freshvar_6 := "leq" (_freshvar_lev_0, _fresh_field_lev_1);
+if (_freshvar_6) {
+_freshvar_8 := "shadowPropExists" ("p");
+_freshvar_lev_1 := "lub" (_freshvar_lev_0, _fresh_lev_var8);
+o[_freshvar_7] := _freshvar_lev_1;
+o[_freshvar_8] := _freshvar_lev_0;
+o["p"] := true
+} else {
+throw "MONITOR EXCEPTION -> Illegal Field Assign"
+}
+} else {
+_freshvar_6 := "leq" (_freshvar_lev_0, _fresh_field_lev_0);
+if (_freshvar_6) {
+_freshvar_lev_1 := "lubn" ([ _freshvar_lev_0, _fresh_lev_var8 ]);
+o[_freshvar_7] := _freshvar_lev_1;
+o["p"] := true
+} else {
+throw "MONITOR EXCEPTION -> Illegal Field Assign"
+}
+}
+_fresh_lev_var9 := "lubn" ([  ]);
+_freshvar_9 := "leq" (_pc_1, _fresh_lev_var9);
+if (_freshvar_9) {
+print "5"
+} else {
+throw "MONITOR EXCEPTION -> Illegal Print"
+}
+_freshvar_lev_2 := "parse_lvl" ("high");
+_freshvar_10 := "leq" (_pc_1, h_lev);
+if (_freshvar_10) {
+h_lev := "lub" (_freshvar_lev_2, _pc_1)
+} else {
+throw "MONITOR EXCEPTION -> Illegal UpgVarLab"
+}
+_fresh_lev_var10 := "lubn" ([  ]);
+_freshvar_11 := "leq" (_pc_1, _fresh_lev_var10);
+if (_freshvar_11) {
+print "Before If"
+} else {
+throw "MONITOR EXCEPTION -> Illegal Print"
+}
+_fresh_lev_var14 := "lubn" ([ h_lev ]);
+_freshvar_lev_3 := "lub" (_pc_1, _fresh_lev_var14);
+_freshvar_12 := _freshvar_lev_3;
+if (h) {
+_fresh_lev_var11 := "lubn" ([  ]);
+_freshvar_13 := "leq" (_freshvar_12, _fresh_lev_var11);
+if (_freshvar_13) {
+print "If then"
+} else {
+throw "MONITOR EXCEPTION -> Illegal Print"
+}
+_fresh_lev_var12 := "lubn" ([ o_lev ]);
+_fresh_lev_var13 := "lubn" ([  ]);
+_freshvar_14 := "lubn" ([ _fresh_lev_var12, _fresh_lev_var13, _freshvar_12 ]);
+_freshvar_16 := "shadowPropExists" ("p");
+_fresh_field_lev_2 := o[_freshvar_16];
+if (_fresh_field_lev_2 == 'undefined) {
+throw "Internal Error"
+} else {
+_freshvar_15 := "leq" (_freshvar_14, _fresh_field_lev_2);
+if (_freshvar_15) {
+delete o["p"]
+} else {
+throw "MONITOR EXCEPTION -> Illegal Field Delete"
+}
+}
+}
+_fresh_lev_var15 := "lubn" ([  ]);
+_freshvar_17 := "leq" (_pc_1, _fresh_lev_var15);
+if (_freshvar_17) {
+print "After if"
+} else {
+throw "MONITOR EXCEPTION -> Illegal Print"
+}
+_fresh_lev_var16 := "lubn" ([ o_lev ]);
+_fresh_lev_var17 := "lubn" ([  ]);
+_freshvar_18 := "lubn" ([ _fresh_lev_var16, _fresh_lev_var17, _pc_1 ]);
+_freshvar_20 := "shadowPropExists" ("p");
+_fresh_field_lev_3 := o[_freshvar_20];
+_fresh_field_lev_4 := o["structLev"];
+_freshvar_19 := "leq" (_freshvar_18, x_lev);
+if (_freshvar_19) {
+if (_fresh_field_lev_3 == 'undefined) {
+x_lev := "lub" (_freshvar_18, _fresh_field_lev_4)
+} else {
+x_lev := "lub" (_freshvar_18, _fresh_field_lev_3)
+}
+} else {
+throw "MONITOR EXCEPTION -> Illegal Assignment"
+}
+x := "p" in_obj o;
+_fresh_lev_var18 := "lubn" ([  ]);
+_freshvar_21 := "leq" (_pc_1, _fresh_lev_var18);
+if (_freshvar_21) {
+print "6"
+} else {
+throw "MONITOR EXCEPTION -> Illegal Print"
+}
+_fresh_lev_var21 := "lubn" ([ x_lev ]);
+_freshvar_lev_4 := "lub" (_pc_1, _fresh_lev_var21);
+_freshvar_22 := _freshvar_lev_4;
+if (x) {
+_fresh_lev_var19 := "lubn" ([  ]);
+_freshvar_23 := "leq" (_freshvar_22, _fresh_lev_var19);
+if (_freshvar_23) {
+print "7"
+} else {
+throw "MONITOR EXCEPTION -> Illegal Print"
+}
+_freshvar_24 := "leq" (_freshvar_22, l_lev);
+if (_freshvar_24) {
+_fresh_lev_var20 := "lubn" ([  ]);
+l_lev := "lub" (_freshvar_22, _fresh_lev_var20);
+l := false
+} else {
+throw "MONITOR EXCEPTION -> Illegal Assignment"
+}
+}
+_fresh_lev_var22 := "lubn" ([  ]);
+_freshvar_25 := "leq" (_pc_1, _fresh_lev_var22);
+if (_freshvar_25) {
+print "8"
+} else {
+throw "MONITOR EXCEPTION -> Illegal Print"
+}
+_fresh_lev_var23 := "lubn" ([ l_lev ]);
+_freshvar_lev_5 := "lub" (_fresh_lev_var23, _pc_1);
+return ( l, _freshvar_lev_5 ) }
+function lub (lev1, lev2) { return lev1 || lev2 }
+function upgPropExists (obj, lev_obj, prop, lev_prop, lev_str, lev_lev_str, pc) { lev := "parse_lvl" (lev_str);
+leq_1 := "leq" (lev_lev_str, pc);
+if (!(leq_1)) {
+throw "MONITOR EXCEPTION -> upgPropExists - Levels must be literals"
+}
+lev_ctx := "lubn" ([ lev_obj, lev_prop, pc ]);
+prop_2 := "shadowPropExists" (prop);
+lev_2 := obj[prop_2];
+leq_2 := "leq" (lev_ctx, lev_2);
+if (leq_2) {
+lev_3 := "lub" (lev_ctx, lev);
+obj[prop_2] := lev_3
+} else {
+throw "MONITOR EXCEPTION -> Illegal P_Exists Upgrade"
+}
+return ( 0, pc ) }
+function shadowPropValue (prop_str) { result := s_concat([ prop_str, "_prop_value_lvl" ]);
+return result }
+function get_top () { return true }
+function upgPropVal (obj, lev_obj, prop, lev_prop, lev_str, lev_lev_str, pc) { lev := "parse_lvl" (lev_str);
+leq_1 := "leq" (lev_lev_str, pc);
+if (!(leq_1)) {
+throw "MONITOR EXCEPTION -> upgPropExists - Levels must be literals"
+}
+lev_ctx := "lubn" ([ lev_obj, lev_prop, pc ]);
+prop_2 := "shadowPropValue" (prop);
+lev_2 := obj[prop_2];
+leq_2 := "leq" (lev_ctx, lev_2);
+if (leq_2) {
+lev_3 := "lub" (lev_ctx, lev);
+obj[prop_2] := lev_3
+} else {
+throw "MONITOR EXCEPTION -> Illegal P_Val Upgrade"
+}
+return ( 0, pc ) }
+function upgStruct (obj, lev_obj, lev_str, lev_lev_str, pc) { lev := "parse_lvl" (lev_str);
+leq_1 := "leq" (lev_lev_str, pc);
+if (!(leq_1)) {
+throw "MONITOR EXCEPTION -> upgStruct - Levels must be literals"
+}
+lev_ctx := "lub" (lev_obj, pc);
+lev_2 := obj["structLev"];
+leq_2 := "leq" (lev_ctx, lev_2);
+if (leq_2) {
+lev_3 := "lub" (lev_ctx, lev);
+obj["structLev"] := lev_3
+} else {
+throw "MONITOR EXCEPTION -> Illegal P_Val Upgrade"
+}
+return ( 0, pc ) }
+function leq (lev1, lev2) { nlev1 := !(lev1);
+nlev2 := !(lev2);
+aux := nlev1 && nlev2;
+return lev2 || aux }
+function lubn (levs) { i := 0;
+acc := false;
+while (i < l_len(levs)) { acc := "lub" (acc, l_nth(levs, i));
+i := i + 1 }
+return acc }

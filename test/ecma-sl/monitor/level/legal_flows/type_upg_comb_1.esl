@@ -1,0 +1,22 @@
+function main () {
+	h:= true;
+	l:= true;
+	o := {}
+	o.p := true;
+
+	
+	x:= "upgObject"(o, "high");
+	
+
+	
+	
+	if (h) {
+	  x:= "upgStruct"(o, "low")
+	}
+
+
+
+
+	return l
+
+}

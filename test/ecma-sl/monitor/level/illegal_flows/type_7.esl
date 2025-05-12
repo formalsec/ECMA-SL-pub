@@ -1,0 +1,26 @@
+function main () {
+  h:= true;
+  l:= true;
+  o := {}
+  o.p :=true;
+  o.q := true;
+  proph := "q";
+
+  x:= "upgVar"("proph", "high");
+  x:= "upgVar"("h", "high");
+
+  if (h) {
+    proph := "p"
+  }
+  delete o[proph];
+  x:= "p" in_obj o;
+  if (x) {
+    l:= false
+  }
+
+
+
+
+  return l
+
+}

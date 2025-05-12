@@ -1,0 +1,22 @@
+function main() {
+a := "setTop"("{aux_1, aux_2}");
+a := "allowFlow"("{aux_1}","{}");
+
+aux_1 := 0; 
+aux_2 := 0;
+aux_3 := 0;
+
+d := "upgVar"("aux_1", "{aux_1}"); 
+d := "upgVar"("aux_2", "{aux_2}"); 
+d := "upgVar"("aux_3", "{aux_3}"); 
+
+x := aux_1;
+z := aux_3;
+y := aux_2 + 1;
+
+if (y == 1) { 
+ z := aux_3 
+} ; 
+
+return true
+}

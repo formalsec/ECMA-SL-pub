@@ -1,0 +1,27 @@
+function main () {
+h:= true;
+l:= true;
+o := {}
+o.q := false;
+proph := "p";
+
+
+x:= "upgVar"("h", "high");
+ x:= "upgVar"("proph", "high");
+
+
+if (h) {
+  proph := "q"
+}
+o[proph] := true;
+x:= o.q;
+if (!x) {
+  l:= false
+}
+
+
+
+
+return l
+
+}

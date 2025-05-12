@@ -1,0 +1,21 @@
+function main() {
+  y := {};
+  x := extern str_symbol("x");
+  z := extern str_symbol("z");
+
+  y["length"] := 2.0;
+  y[x] := 1.0;
+  y[z] := 3.0;
+
+  t := y["length"];
+
+  /* z == "length" => t == 3.0 */
+  assert (z != "length" || t == 3.0);
+
+  /* z != "length" && x == "length" => t == 1.0 */
+  assert (!((z != "length") && (x == "length")) || t == 1.0);
+
+  /* (x != "length" && z != "length") => t == 2.0 */
+  assert (((z == "length") || (x == "length")) || t == 2.0);
+  return 0;
+}

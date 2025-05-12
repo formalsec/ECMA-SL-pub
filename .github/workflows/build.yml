@@ -1,0 +1,48 @@
+name: Build
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    env:
+      TERM: screen-256color
+    strategy:
+      fail-fast: false
+      matrix:
+        os:
+          - self-hosted
+          # - macos-latest
+        ocaml-compiler:
+          - "5.3"
+
+    runs-on: ${{ matrix.os }}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+
+      - name: Setup OCaml ${{ matrix.ocaml-compiler }}
+        uses: ocaml/setup-ocaml@v3
+        with:
+          ocaml-compiler: ${{ matrix.ocaml-compiler }}
+          dune-cache: true
+
+      - name: Install dependencies
+        run: opam install -y . --deps-only --with-test
+
+      - name: Build
+        run: opam exec -- dune build @install
+
+      - name: Test
+        run: opam exec -- dune runtest

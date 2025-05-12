@@ -1,0 +1,10 @@
+function main () {
+  x := extern int_symbol("x");
+  y := x * 2;
+  if (x > 10) {
+    assert ( y > 20 );
+  } else {
+    assert ( y <= 20 );
+  }
+  return 1;
+}

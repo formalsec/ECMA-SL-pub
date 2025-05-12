@@ -1,0 +1,11 @@
+function main() {
+  o := {}
+  x := extern str_symbol("x");
+
+  o[x] := 1;
+  delete o[x];
+
+  print(o[x]);
+
+  return 0
+}

@@ -1,0 +1,12 @@
+function myabs(x) {
+  if (x >= 0) {
+    return x;
+  }
+  return -x;
+}
+
+function main() {
+  x := extern int_symbol("x");
+  assert (myabs(x) >= 0);
+  return 1;
+}

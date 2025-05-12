@@ -1,0 +1,24 @@
+function s_strchr(str, c) {
+  i := extern int_symbol("i");
+  char := s_nth(str, i);
+  ret := ite(char = c, i, -1);
+  return ret
+
+};
+
+function main() {
+
+  l := 10;
+  
+  while (l > 0){
+    i := 10;
+    str := extern str_symbol("str");
+    extern assume(s_len(str) <  i);
+
+    idx := s_strchr(str, "A");
+    extern assume (idx = 5);
+    l := l - 1
+  };
+
+  return 0
+}

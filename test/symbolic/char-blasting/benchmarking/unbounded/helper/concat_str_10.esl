@@ -1,0 +1,12 @@
+function main() {
+  
+  i := 10;
+  str1 := extern str_symbol("str1");
+  str2 := extern str_symbol("str2");
+  extern assume(s_len(str1) <  i);
+  extern assume(s_len(str2) <  i);
+
+  len := s_concat(str1, str2);
+
+  return 0
+}

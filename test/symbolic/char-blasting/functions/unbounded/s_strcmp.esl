@@ -1,0 +1,18 @@
+function s_strcmp(str1, str2) {
+  /* ret := ite(str1 > str2, 1, ite(str1 < str2, -1, 0)); */
+  ret := ite(str1 = str2, 0, 1);
+  return ret
+
+};
+
+function main() {
+  
+  str1 := extern str_symbol("str1");
+  str2 := extern str_symbol("str2");
+  ret := s_strcmp(str1, str2);
+  print ret;
+
+  extern assume (ret = 0);
+
+  return 0
+}

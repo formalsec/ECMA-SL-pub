@@ -1,0 +1,23 @@
+function test_integer(): boolean {
+  return 0 != 1;
+}
+
+function test_float(): boolean {
+  return 0.0 != 0.1;
+}
+
+function test_string(): boolean {
+  return "0" != "1";
+}
+
+function test_undefined(): boolean {
+  return 1 != 'undefined;
+}
+
+function main(): int {
+  assert (test_integer());
+  assert (test_float());
+  assert (test_string());
+  assert (test_undefined());
+  return 0;
+}

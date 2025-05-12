@@ -1,0 +1,11 @@
+(include_subdirs unqualified)
+
+(library
+ (public_name ecma-sl.js2ecmasl)
+ (name eslJSParser)
+ (modules api)
+ (flags
+  (:standard -open Prelude))
+ (libraries bos prelude)
+ (instrumentation
+  (backend bisect_ppx)))

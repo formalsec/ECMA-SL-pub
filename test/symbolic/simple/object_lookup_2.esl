@@ -1,0 +1,8 @@
+function main() {
+  x := extern str_symbol("x");
+  y := {};
+  y[x] := 2.0;
+
+  assert (y[x] == 2.0);
+  return 0;
+}

@@ -1,0 +1,46 @@
+/* Copyright (C) 2022-2025 formalsec programmers
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ */
+
+typedef stack_t := {
+  size : int,
+  data : list
+};
+
+function stack_make() : stack_t {
+  s := { size : 0, data : [] };
+  return s;
+}
+
+function stack_push(st : stack_t, elt : any) {
+  st.size := st.size + 1;
+  st.data := l_prepend(elt, st.data);
+  return;
+}
+
+function stack_pop(st : stack_t) : any {
+  let result = hd st.data;
+  st.size := st.size - 1;
+  st.data := tl st.data;
+  return result;
+}
+
+function stack_top(st : stack_t) : any {
+  return (hd st.data);
+}
+
+function stack_is_empty(st : stack_t) : boolean {
+  return (st.size == 0);
+}

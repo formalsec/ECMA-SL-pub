@@ -1,0 +1,11 @@
+import stdlib;
+
+function main() {
+  assert (!is_NaN(0.0));
+  assert (is_NaN(NaN));
+  assert (to_uint16(42.0) == 42.0);
+  assert (to_uint16(70000.0) == 4464.0);
+  assert (to_uint16(NaN) == 0.0);
+  assert (to_uint16(-(1.0)) == 65535.0);
+  return 0;
+}

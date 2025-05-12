@@ -1,0 +1,9 @@
+(include_subdirs unqualified)
+
+(library
+ (public_name ecma-sl.base)
+ (name eslBase)
+ (modules base cont font log io string terminal)
+ (libraries fmt prelude unix)
+ (instrumentation
+  (backend bisect_ppx)))

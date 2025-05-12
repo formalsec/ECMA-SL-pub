@@ -1,0 +1,101 @@
+(include_subdirs unqualified)
+
+(library
+ (public_name ecma-sl.semantics)
+ (name eslSemantics)
+ (modules
+  ; error
+  error_type
+  error_source
+  error_trace
+  compile_error
+  typing_error
+  runtime_error
+  ; core parsers
+  lexer
+  parser
+  parsing
+  parsing_helper
+  ; extended parsers
+  eLexer
+  eParser
+  eParsing
+  eParsing_helper
+  ; concrete interpreter
+  interpreter
+  interpreter_base
+  interpreter_tooling
+  eval_op
+  external
+  ; concrete interpreter (domains)
+  store
+  heap
+  call_stack
+  ; concrete interpreter (instrumentation)
+  tracer
+  debugger
+  profiler
+  monitor
+  ; concrete interpreter (instrumentation - debugger)
+  debugger_tui
+  debugger_tui_helper
+  Debugger_tui_code
+  Debugger_tui_view
+  Debugger_tui_execution
+  Debugger_tui_terminal
+  Debugger_cmd
+  Debugger_types
+  ; concrete interpreter (instrumentation - monitors)
+  NSUMonitor
+  NSUException
+  NSUObject
+  NSUStore
+  NSUHeap
+  NSUCallStack
+  NSULabel
+  NSUTopLevel
+  NSULevel
+  NSULevel2
+  NSULevel_Dep
+  ; functorial interpreter
+  choice_monad_intf
+  extern_func
+  interpreter_functor_intf
+  interpreter_functor
+  link_env
+  value_intf
+  ; functorial interpreter (domains)
+  ;x symbolic_object2
+  ;x symbolic_memory2
+  ; compiler
+  preprocessor
+  compiler
+  ; compiler (type system)
+  tChecker
+  tSubtyping
+  tOperator
+  tExpr
+  tStmt
+  tCtx
+  ;  utils
+  re
+  channel_utils
+  arith_utils
+  byte_utils
+  code_utils
+  date_utils
+  parsing_utils
+  string_utils)
+ (preprocess
+  (staged_pps ppx_import ppx_deriving.std))
+ (libraries
+  eslBase
+  eslSyntax
+  eslJSParser
+  menhirLib
+  yojson
+  curses
+  prelude
+  str)
+ (instrumentation
+  (backend bisect_ppx)))

@@ -1,0 +1,5 @@
+(install
+ (section
+  (site
+   (ecma-sl stdlib)))
+ (files fpath.esl os.esl stack.esl stdlib.esl queue.esl))

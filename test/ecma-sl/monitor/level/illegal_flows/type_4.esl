@@ -1,0 +1,22 @@
+function main () {
+  h:= true;
+  l := true;
+  oh := {}
+  ol := {}
+  ol.p := false;
+
+  x:= "upgVar"("h", "high");
+  x:= "upgVar" ("oh", "high");
+
+
+  if (h) {
+    oh := ol
+  }
+  oh.p := true;
+  x:=oh.p;
+  if (!x) {
+    l := false
+  }
+  return l
+
+}

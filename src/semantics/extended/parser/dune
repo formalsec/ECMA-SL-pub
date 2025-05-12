@@ -1,0 +1,7 @@
+(ocamllex
+ (modules eLexer))
+
+(menhir
+ (modules eParser)
+ (merge_into eParser)
+ (flags --table --explain))

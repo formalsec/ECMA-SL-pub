@@ -1,0 +1,143 @@
+{
+	"$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+	"name": "ECMA-SL",
+	"patterns": [
+		{ "include": "#comments" },
+		{ "include": "#breakpoints" },
+		
+		{ "include": "#control" },
+		{ "include": "#constants" },
+		{ "include": "#builtin" },
+		{ "include": "#api" },
+
+		{ "include": "#numbers" },
+		{ "include": "#strings" },
+		{ "include": "#booleans" },
+		{ "include": "#symbols" },
+
+		{ "include": "#types" }
+	],
+
+	"repository": {
+
+		"comments": {
+			"patterns": [
+				{
+					"name": "comment.block.esl",
+					"begin": "/\\*",
+					"end": "\\*/"
+				}
+			]
+		},
+		
+		"breakpoints": {
+      "name": "invalid.esl",
+      "match": "#.*?$"
+		},
+
+		"control": {
+			"patterns": [
+				{
+					"name": "keyword.control.esl",
+					"match": "\\b(if|else|elif|while|foreach|repeat|until|switch|case|sdefault|match|with|default|None|null|function|return|lambda|macro|catch|throw|fail|assume|assert|import|extern|print|delete|symbolic|typeof|gen_wrapper)\\b"
+				}
+			]
+		},
+
+		"constants": {
+			"patterns": [
+				{
+					"name": "constant.language.esl",
+					"match": "\\b(NaN|Infinity|PI|MAX_VALUE|MIN_VALUE)\\b"
+				}
+			]
+		},
+
+		"builtin":{
+			"patterns": [
+				{
+					"name": "entity.name.function.esl",
+					"match": "\\b(is_NaN|to_int|to_int32|to_uint16|to_uint32|int_to_float|int_of_float|int_to_string|int_of_string|int_to_four_hex|int_to_be_bytes|int_from_le_bytes|octal_to_decimal|uint_from_le_bytes|float_to_string|float_of_string|float_to_byte|float64_to_le_bytes|float64_to_be_bytes|float32_to_le_bytes|float32_to_be_bytes|float64_from_le_bytes|float64_from_be_bytes|float32_from_le_bytes|float32_from_be_bytes|bytes_to_string|utf8_decode|hex_decode|from_char_code|from_char_code_u|to_char_code|to_char_code_u|to_lower_case|to_upper_case|trim|random|abs|sqrt|ceil|floor|exp|log_2|log_e|log_10|cos|sin|tan|cosh|sinh|tanh|acos|asin|atan|atan2|max|min|to_precision|to_exponential|to_fixed|parse_number|parse_string|parse_date|s_len|s_len_u|s_concat|s_split|s_nth|s_nth_u|s_substr|s_substr_u|a_nth|a_set|l_set|a_len|array_make|list_to_array|hd|tl|l_len|l_nth|l_add|l_prepend|l_concat|l_remove|l_remove_nth|l_remove_last|l_reverse|l_sort|in_list|fst|snd|t_len|t_nth|obj_to_list|obj_fields|in_obj|ite)\\b"
+				}
+			]
+		},
+
+		"api": {
+			"patterns": [
+				{
+					"name": "keyword.other.esl",
+					"match": "\\b(se_assume|se_abort|se_is_sat|se_is_symbolic|se_is_number|se_mk_symbolic|se_evaluate|se_maximize|se_minimize)\\b"
+				}
+			]
+		},
+
+		"numbers": {
+			"patterns": [
+				{
+					"name": "constant.numeric.esl",
+					"match": "\\b((0x[0-9a-fA-F]{4,6})|(([0-9]+\\.?[0-9]*)|(\\.[0-9]+))((e|E)(\\+|-)?[0-9]+)?)\\b"
+				}
+			]
+		},
+
+		"strings": {
+			"name": "string.quoted.double.esl",
+			"begin": "\"",
+			"beginCaptures": {
+				"0": { "name": "punctuation.definition.string.begin.esl" }
+			},
+			"end": "(\")|((?:[^\\\\\\n])$)",
+			"endCaptures": {
+				"1": { "name": "punctuation.definition.string.end.esl" },
+				"2": { "name": "invalid.illegal.newline.esl" }
+			},
+			"patterns": [
+				{ 
+					"name": "constant.character.escape.esl",
+					"match": "\\\\(x[0-9A-Fa-f]{2}|u\\{[0-9A-Fa-f]{4,6}\\}|.|$)"
+				}
+			]
+		},
+
+		"booleans": {
+			"patterns": [
+				{
+					"name": "keyword.control.esl",
+					"match": "\\b(true|false)\\b"
+				}
+			]
+		},
+
+		"symbols": {
+			"patterns": [
+				{
+					"name": "keyword.control.esl",
+					"match": "'(undefined)\\b"
+				},
+				{
+					"name": "constant.regexp",
+					"match": "'((_*[A-z][0-9A-z_']*)|(-?[0-9]+))\\b"
+				}
+			]
+		},
+		
+		"types": {
+			"patterns": [
+				{
+					"name": "keyword.control.esl",
+					"match": "\\b(typedef)\\b"
+				},
+				{
+					"name": "entity.name.type",
+					"match": "\\b(any|unknown|never|undefined|void|int|float|string|boolean|symbol|sigma)\\b"
+				},
+				{
+					"name": "entity.name.type",
+					"match": "\\b(__\\$Int|__\\$Flt|__\\$Bool|__\\$Str|__\\$Obj|__\\$List|__\\$Type|__\\$Tuple|__\\$Null|__\\$Symbol|__\\$Curry|__\\$Array)\\b"
+				}
+
+			]
+		}
+	},
+	"scopeName": "source.esl"
+}

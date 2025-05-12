@@ -1,0 +1,18 @@
+function s_strchr(str, c) {
+  i := extern int_symbol("i");
+  char := s_nth(str, i);
+  ret := ite(char = c, i, -1);
+  return ret
+
+};
+
+function main() {
+  
+  str := extern str_symbol("str");
+  idx := s_strchr(str, "A");
+  print idx;
+
+  extern assume (idx = 0);
+
+  return 0
+}

@@ -1,0 +1,31 @@
+function main() {
+	untypedVariable := 10;              									/* Valid */
+  
+	/* Primitive variable assignment */
+	typedVariable: int := 10;        											/* Valid */
+	badTypedVariable: int := "abc";												/* BadValue: int <- string */
+
+	/* Undefined variable assignment */
+	undefinedVariable: undefined := 'undefined;   				/* Valid */
+	badUndefinedSymVariable: symbol := 'undefined; 				/* BadValue: symbol <- undefined */
+
+	/* Literal variable assignment */
+	literalVariable: 10 := 10;														/* Valid */
+	badLiteralVariableVal: 10 := 20;											/* BadValue: 10 <- 20 */
+	badLiteralVariableType: 10 := "abc";									/* BadValue: 10 <- "abc" */
+
+	/* Untyped assignment propagation */
+	baseUntypedVar := 10;
+	baseUntypedVar := "abc";															/* Valid */
+	untypedVarPropagationEq: int := baseUntypedVar;				/* Valid */
+	untypedVarPropagationDiff: string := baseUntypedVar;	/* Valid */
+	
+	/* Typed assignment propagation */
+	baseTypedVar: int := 10;
+	baseTypedVar := "abc";																/* BadValue: int <- string */
+	baseTypedVar: string := "abc";												/* Valid */
+	typedVarPropagation: string := baseTypedVar;					/* Valid */
+	typedBadVarPropagation: int := baseTypedVar;					/* BadValue: string <- int */
+
+	return 0
+}

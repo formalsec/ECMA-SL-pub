@@ -1,0 +1,6 @@
+function main () {
+  x := extern int_symbol("x");
+  print(x);
+  extern i_dont_exist();
+  return 1;
+}

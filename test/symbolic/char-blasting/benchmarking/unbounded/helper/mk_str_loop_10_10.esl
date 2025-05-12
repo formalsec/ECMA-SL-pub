@@ -1,0 +1,12 @@
+function main() {
+
+  l := 10;
+  i := 10;
+  while (i > 0){
+    str := extern str_symbol("str");
+    extern assume(s_len(str) <  l);
+    i := i - 1
+  };
+
+  return 0
+}

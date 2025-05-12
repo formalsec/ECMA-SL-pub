@@ -1,0 +1,9 @@
+import stdlib;
+
+function main() {
+  let flour = extern str_symbol("flour");
+  let water = extern str_symbol("water");
+  let loaf = s_concat([ flour, " ", water ]);
+  assert (loaf != "banana bread");
+  return 0;
+}

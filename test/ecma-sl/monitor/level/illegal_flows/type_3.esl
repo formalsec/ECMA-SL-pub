@@ -1,0 +1,33 @@
+function main () {
+print "1";
+h:= true;
+print "2";
+l:= true;
+print "3";
+o := {}
+print "4";
+o.p := true;
+print "5";
+
+x:= "upgVar"("h", "high");
+
+print "Before If";
+if (h) {
+print "If then";
+  delete o["p"]
+}
+print "After if";
+
+x:= "p" in_obj o;
+print "6";
+if (x) {
+print "7";
+  l:= false
+}
+print "8";
+
+
+
+return l
+
+}

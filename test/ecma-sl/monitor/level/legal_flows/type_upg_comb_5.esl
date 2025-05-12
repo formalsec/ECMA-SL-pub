@@ -1,0 +1,19 @@
+function main () {
+	h:= true;
+	l:= true;
+	o := {}
+	o.p := true;
+
+	x:= "upgVar"("h", "high");
+	x:= "upgPropExists"(o, "p", "high");
+	
+	if (h) {
+	 delete o["p"]
+	}
+
+
+
+
+	return l
+
+}

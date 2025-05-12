@@ -1,0 +1,39 @@
+function main() {
+  o := {}
+  x := extern str_symbol("x");
+  y := extern str_symbol("y");
+  z := extern str_symbol("z");
+  w := extern str_symbol("w");
+
+  i := 0;
+  cap := 10;
+
+  while (i < cap) {
+    p := s_concat(["field", int_to_string(i)]);
+    o[p] := 10;
+    print(i);
+    i := i + 1
+  }
+
+  o[x] := -1;
+  print(x);
+  o[y] := -1;
+  print(y);
+
+  /* o[z] := -1;  */
+  /* o[w] := -1;  */
+
+  total := 0;
+  i := 0;
+
+  while (i < cap) {
+    p := s_concat(["field", int_to_string(i)]);
+    total := total + o[p];
+    i := i + 1
+  }
+
+  total := total + o[x] + o[y];
+
+  assert (total >= (10 * cap - 2));
+  return 0
+}

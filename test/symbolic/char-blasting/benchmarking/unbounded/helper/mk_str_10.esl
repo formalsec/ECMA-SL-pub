@@ -1,0 +1,8 @@
+function main() {
+  
+  i := 10;
+  str := extern str_symbol("str");
+  extern assume(s_len(str) <  i);
+  
+  return 0
+}

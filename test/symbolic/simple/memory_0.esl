@@ -1,0 +1,27 @@
+function main() {
+  a := extern str_symbol("a");
+  s1 := extern str_symbol("s1");
+  s2 := extern str_symbol("s2");
+
+  obj := {}
+  o1 := {foo:1}
+  o2 := {foo:2}
+  o3 := {foo:3}
+  o4 := {foo:4}
+  extern assume (s1 != s2);
+  extern assume (s1 != "v1");
+  extern assume (s1 != "v2");
+  extern assume (s2 != "v1");
+  extern assume (s2 != "v2");
+
+  /* se_assume(a == "v1" || a == "v2" || a == s1 || a == s2); */
+
+
+  obj["v1"] := o1;
+  obj["v2"] := o2;
+  obj[s1] := o3;
+  obj[s2] := o4;
+
+  print(obj[a].foo);
+  return 0
+}

@@ -1,0 +1,16 @@
+import queue;
+import stdlib;
+
+function main() {
+  let q = queue_make();
+  enqueue(q, 1);
+  enqueue(q, 2);
+  enqueue(q, 3);
+  enqueue(q, 4);
+  assert(dequeue(q) == 1);
+  assert(dequeue(q) == 2);
+  assert(dequeue(q) == 3);
+  assert(dequeue(q) == 4);
+  assert(queue_is_empty(q));
+  return 0;
+}

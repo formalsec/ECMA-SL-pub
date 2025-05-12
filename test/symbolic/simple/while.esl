@@ -1,0 +1,8 @@
+function main () {
+  x := extern int_symbol("x");
+  extern assume((x > 1) && (x < 10));
+  while (x < 10) {
+    x := x + 1;
+  }
+  return 1;
+}

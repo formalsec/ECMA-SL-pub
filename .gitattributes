@@ -1,0 +1,7 @@
+*.esl linguist-language=JavaScript
+*.cesl linguist-language=JavaScript
+
+*.ml linguist-language=OCaml
+*.mli linguist-language=OCaml
+*.mly linguist-language=OCaml
+*.mll linguist-language=OCaml

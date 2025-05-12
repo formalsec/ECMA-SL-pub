@@ -1,0 +1,10 @@
+function main() {
+  
+  i := extern int_symbol("i");
+  str := extern str_symbol("str");
+  extern assume(s_len(str) < 10);
+
+  c := s_nth(str, i);
+
+  return 0
+}

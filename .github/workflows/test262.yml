@@ -1,0 +1,63 @@
+name: Run Test262 Benchmarks
+
+on:
+  workflow_dispatch:
+    inputs:
+      test_type:
+        description: "Choose test type"
+        required: true
+        default: "test"
+        type: choice
+        options:
+          - test
+          - test-sym
+
+jobs:
+  test:
+    env:
+      TERM: screen-256color
+      OCAML_COMPILER: 5.3
+      RESULTS_FILE: results-test262_${{ github.sha }}.txt
+      SLACK_WEBHOOK_URL: ${{ vars.SLACK_WEBHOOK_URL }}
+
+    strategy:
+      fail-fast: false
+
+    runs-on: self-hosted
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          submodules: true
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+
+      - name: Setup OCaml ${{ env.OCAML_COMPILER }}
+        uses: ocaml/setup-ocaml@v3
+        with:
+          ocaml-compiler: ${{ env.OCAML_COMPILER }}
+
+      - name: Install dependencies
+        run: |
+          opam install -y . --deps-only --with-test
+          opam install z3
+
+      - name: Build and Install
+        run: |
+          opam exec -- dune build @install --profile release
+          opam exec -- dune install
+
+      - name: Run Test262
+        # The workflow should succeed even if `test` has nonzero return code
+        continue-on-error: true
+        run: |
+          opam exec -- ecma-sl ${{ inputs.test_type }} --type test262 --harness bench/test262/environment/harness.js bench/test262/tests --webhook-url "$SLACK_WEBHOOK_URL" > ${{ env.RESULTS_FILE }}
+
+      - name: Upload Results
+        uses: actions/upload-artifact@v4
+        with:
+          name: results-test262
+          path: ${{ env.RESULTS_FILE }}

@@ -1,0 +1,21 @@
+function main () {
+	h:= true;
+	l:= true;
+
+	aux1:= "upgVar"("h", "high");
+
+
+	if (h) {
+	  aux2:= "upgVar"("l", "low")
+	}
+	
+	if (!h) {
+	  l:= false
+	}
+
+
+
+
+	return l
+
+}

@@ -1,0 +1,9 @@
+(cram
+ (deps
+  %{bin:ecma-sl}
+  (package ecma-sl)
+  harness.js
+  (source_tree array)
+  (source_tree object)
+  (source_tree regex)
+  (source_tree simple)))

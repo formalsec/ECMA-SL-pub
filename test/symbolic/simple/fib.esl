@@ -1,0 +1,20 @@
+function fib(n) {
+  a := 0; b := 1; c := n;
+  i := 2;
+  while (i <= n) {
+    c := a + b;
+    a := b;
+    b := c;
+    i := i + 1;
+  }
+  return c;
+}
+
+function main() {
+  x := extern int_symbol("x");
+  result := fib(x);
+  if ((x >= 8) && (result < 34)) {
+    assert(false);
+  }
+  return 0;
+}

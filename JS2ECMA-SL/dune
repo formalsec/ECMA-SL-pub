@@ -1,0 +1,18 @@
+(dirs src)
+
+(executable
+ (name script)
+ (modules script)
+ (libraries unix))
+
+(rule
+ (target js2ecma-sl)
+ (deps
+  package.json
+  (source_tree src))
+ (action
+  (run ./script.exe ./src/index.js)))
+
+(install
+ (section bin)
+ (files js2ecma-sl))

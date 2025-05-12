@@ -1,0 +1,5 @@
+(mdx
+ (libraries ecma-sl)
+ (deps
+  %{bin:ecma-sl}
+  (source_tree test/toyecma)))

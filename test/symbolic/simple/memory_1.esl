@@ -1,0 +1,19 @@
+
+function main() {
+  o := {}
+  x := extern str_symbol("x");
+  y := extern str_symbol("y");
+
+  o["key"] := 1;
+  o["key2"] := 2;
+
+  extern assume((x == "key") || (x == "key2"));
+
+  print(o[x] + o["key"]);
+
+  print(o[x]);
+
+  assert ((o[x] == 1 || o[x] == 2));
+  /* assert (o[x] == 1 || o[x] == 2); */
+  return 0
+}

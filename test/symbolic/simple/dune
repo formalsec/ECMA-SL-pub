@@ -1,0 +1,25 @@
+(cram
+ (enabled_if %{lib-available:z3})
+ (deps
+  (package ecma-sl)
+  %{bin:ecma-sl}
+  assume.esl
+  extern.esl
+  fib.esl
+  func.esl
+  memory_0.esl
+  memory_1.esl
+  memory_2.esl
+  memory_delete.esl
+  if.esl
+  object_delete.esl
+  object_lookup_0.esl
+  object_lookup_1.esl
+  object_lookup_2.esl
+  object_lookup_3.esl
+  object_lookup_4.esl
+  object_lookup_5.esl
+  object_lookup_6.esl
+  strings.esl
+  string_concat.esl
+  while.esl))

@@ -1,0 +1,9 @@
+; (cram
+;  (applies_to test_ecmaref5)
+;  (enabled_if false))
+
+(cram
+ (deps
+  (package ecma-sl)
+  %{bin:ecma-sl}
+  (source_tree ../../JS-Interpreters)))

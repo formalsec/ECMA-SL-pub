@@ -1,0 +1,19 @@
+function s_strcmp(str1, str2) {
+  ret := ite(str1 = str2, 0, 1);
+  return ret
+
+};
+
+function main() {
+  
+  i := 1000;
+  str1 := extern str_symbol("str1");
+  str2 := extern str_symbol("str2");
+  extern assume(s_len(str1) <  i);
+  extern assume(s_len(str2) <  i);
+  ret := s_strcmp(str1, str2);
+
+  extern assume (ret = 0);
+
+  return 0
+}

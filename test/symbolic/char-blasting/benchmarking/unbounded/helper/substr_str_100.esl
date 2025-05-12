@@ -1,0 +1,9 @@
+function main() {
+  
+  str := extern str_symbol("str");
+  extern assume(s_len(str) < 100);
+
+  sub_str := s_substr(str, 30, 50);
+
+  return 0
+}

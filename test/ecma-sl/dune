@@ -1,0 +1,12 @@
+(cram
+ (deps
+  %{bin:ecma-sl}
+  (package ecma-sl)
+  (source_tree relative-imports)
+  test_parser_semicolon.esl
+  test_stdlib_float.esl
+  test_stdlib_fpath.esl
+  test_stdlib_import.esl
+  test_stdlib_inequality.esl
+  test_stdlib_list.esl
+  test_stdlib_queue.esl))

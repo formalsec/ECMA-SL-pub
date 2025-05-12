@@ -1,0 +1,25 @@
+{
+  "name": "ecmasl-vscode",
+  "displayName": "ECMA-SL Language",
+  "description": "Syntax highlighting for the ECMA-SL language",
+  "version": "1.0.0",
+  "engines": {
+    "vscode": "^1.78.0"
+  },
+  "categories": [
+    "Programming Languages"
+  ],
+  "contributes": {
+    "languages": [{
+      "id": "esl",
+      "aliases": ["ECMA-SL", "esl"],
+      "extensions": ["esl"],
+      "configuration": "./language-configuration.json"
+    }],
+    "grammars": [{
+      "language": "esl",
+      "scopeName": "source.esl",
+      "path": "./syntaxes/esl.json"
+    }]
+  }
+}

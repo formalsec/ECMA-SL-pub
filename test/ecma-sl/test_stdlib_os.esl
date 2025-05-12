@@ -1,0 +1,21 @@
+import os;
+
+function write_test(fd) {
+  output_string(fd, "Testing ...\n");
+  output_string(fd, "Line 1\n");
+  output_string(fd, "Line 2\n");
+  return;
+}
+
+function main() {
+  let fpath = add_seg(fpath_make("."), "test.txt");
+  with_open_out(fpath, "write_test");
+  let ic = open_in(fpath);
+  line := input_line(ic);
+  while (line != 'undefined) {
+    print line;
+    line := input_line(ic);
+  }
+  close(ic);
+  return 0;
+}

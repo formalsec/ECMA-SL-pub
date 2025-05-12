@@ -1,0 +1,23 @@
+(cram
+ (enabled_if %{lib-available:z3})
+ (deps
+  %{bin:ecma-sl}
+  (package ecma-sl)
+  (source_tree relative-require)
+  node_require_a.js
+  node_require_b.js
+  node_require_constant_a.js
+  node_require_constant_b.js
+  node_require_function_a.js
+  node_require_function_b.js
+  node_require_modify_intrinsics_a.js
+  node_require_modify_intrinsics_b.js
+  reference_error_1.js
+  reference_error_2.js
+  basic_symbolic_number.js
+  basic_symbolic_string.js
+  symbolic_number_arith.js
+  symbolic_number_branching.js
+  symbolic_string_operations.js
+  symbolic_string_branching.js
+  symbolic_string_array.js))

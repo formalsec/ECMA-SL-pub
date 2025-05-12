@@ -1,0 +1,38 @@
+import fpath;
+
+function test_basename() {
+  let b_path = add_seg(add_seg(fpath_make("."), "a"), "b");
+  let base = basename(b_path);
+  assert (base == "b");
+  return;
+}
+
+function test_dirname() {
+  let b_path = add_seg(add_seg(fpath_make("."), "a"), "b");
+  let c_path = add_seg(b_path, "c");
+  let dir = dirname(c_path);
+  assert (dir == b_path);
+  return;
+}
+
+function test_is_rel() {
+  let fpath = add_seg(add_seg(fpath_make("/"), "a"), "b");
+  assert (!is_rel(fpath));
+  let fpath = add_seg(add_seg(fpath_make("."), "a"), "b");
+  assert (is_rel(fpath));
+  return;
+}
+
+function test_to_string() {
+  let b_abs = add_seg(add_seg(fpath_make("/"), "a"), "b");
+  assert (fpath_to_string(b_abs) == "/a/b");
+  return;
+}
+
+function main() {
+  test_basename();
+  test_dirname();
+  test_is_rel();
+  test_to_string();
+  return 0;
+}

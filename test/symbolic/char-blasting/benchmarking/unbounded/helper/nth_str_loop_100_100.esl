@@ -1,0 +1,15 @@
+function main() {
+
+  l := 100;
+  while (l > 0){
+
+    i := extern int_symbol("i");
+    str := extern str_symbol("str");
+    extern assume(s_len(str) <  100);
+    c := s_nth(str, i);
+
+    l := l - 1
+  };
+
+  return 0
+}

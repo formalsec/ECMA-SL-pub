@@ -1,0 +1,42 @@
+function mk_char_str(size, name) {
+
+  i := size;
+  str := [];
+  while (i > 0) {
+    i := i - 1;
+    char := extern int_symbol(s_concat [name, "_c_", int_to_string(i)]);
+    extern assume(char >= 0);
+    extern assume(char < 256);
+    str := l_concat([char], str)
+  };
+
+  last := size - 1; 
+  last_char := l_nth(str, last);
+  extern assume(last_char = 0);
+
+  return str
+};
+
+
+function cs_nth(str, idx) {
+
+  len := l_len(str);
+  i := len - 1;
+  char := l_nth(str, i);
+  
+  while(i >= 0) {
+    char := ite(idx = i, l_nth(str, i), char);
+    i := i - 1
+  };
+
+  return char 
+};
+
+function main() {
+
+  i := extern int_symbol("i");
+  cs := mk_char_str(10, "str");
+  c := cs_nth(cs, i);
+
+  return 0
+}

@@ -1,0 +1,22 @@
+(dirs ecmaref5 ecmaref6)
+
+(rule
+ (targets es5.include es6.include es6-sym.include)
+ (deps
+  %{bin:ecma-sl}
+  (source_tree ecmaref5)
+  (source_tree ecmaref6))
+ (action
+  (progn
+   (system
+    "realpath %{project_root}/JS-Interpreters/ecmaref5/main.esl > es5.include")
+   (system
+    "realpath %{project_root}/JS-Interpreters/ecmaref6/main.esl > es6.include")
+   (system
+    "realpath %{project_root}/JS-Interpreters/ecmaref6/main_sym.esl > es6-sym.include"))))
+
+(install
+ (section
+  (site
+   (ecma-sl interpreters)))
+ (files es5.include es6.include es6-sym.include es6-sym.cesl))
