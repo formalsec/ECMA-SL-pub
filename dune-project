@@ -46,7 +46,7 @@
   yojson
   conf-npm
   (smtml
-   (>= "0.7.0"))
+   (= "0.7.0"))
   ppx_import
   ppx_deriving
   (mdx :with-test)
