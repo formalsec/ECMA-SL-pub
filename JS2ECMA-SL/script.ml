@@ -26,14 +26,18 @@ let () =
     exit code
   end;
   let js_program = Sys.argv.(1) in
-  let target = "node18" in
-  let code =
-    Format.ksprintf Sys.command
-      "npm exec -- pkg %s -t %s -o js2ecma-sl > /dev/null 2>&1" js_program
-      target
-  in
-  if code <> 0 then begin
-    Format.eprintf "Failed to compile 'j2ecma-sl'@.";
-    exit code
-  end;
+  let targets = [ "linux"; "macos" ] in
+  List.iter
+    (fun target ->
+      let code =
+        Format.ksprintf Sys.command
+          "npm exec -- pkg %s --targets node18-%s-x64 -o ./bin/js2ecma-sl-%s > \
+           /dev/null 2>&1"
+          js_program target target
+      in
+      if code <> 0 then begin
+        Format.eprintf "Failed to compile 'j2ecma-sl'@.";
+        exit code
+      end )
+    targets;
   exit 0
