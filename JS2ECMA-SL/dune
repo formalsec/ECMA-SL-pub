@@ -1,17 +1,22 @@
-(dirs src)
+(dirs bin)
 
 (executable
  (name script)
- (modules script)
- (libraries unix))
+ (modules script))
 
 (rule
+ (enabled_if
+  (and (= %{ocaml-config:system} linux) %{arch_sixtyfour}))
  (target js2ecma-sl)
- (deps
-  package.json
-  (source_tree src))
- (action
-  (run ./script.exe ./src/index.js)))
+ (deps bin/js2ecma-sl-linux)
+ (action (copy %{deps} %{target})))
+
+(rule
+ (enabled_if
+  (and (= %{ocaml-config:system} macosx) %{arch_sixtyfour}))
+ (target js2ecma-sl)
+ (deps bin/js2ecma-sl-macos)
+ (action (copy %{deps} %{target})))
 
 (install
  (section bin)
